@@ -1,1 +1,2 @@
-# cubeSolver
+# cube solver
+This is a program I wrote for fun. It takes a cube input from any position and outputs a list of steps to solve the cube. It is made to be an instructional output, so it isn't solving in a minimum number of steps. It ended up being pretty long because I wanted it to give a clear solution to the user. The main problem is the fact that it outputs as plaintext and can be a bit long to read and difficult to follow if unfamiliar with cube notation and rotations. Also needs more comments and some stuff needs to be removed. But it works for now.
