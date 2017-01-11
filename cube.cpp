@@ -22,7 +22,7 @@ cube::cube()
 }
 
 void cube::listFaces()
-{
+{//standard print, couldnt really use a loop bc of naming issues so it got a bit long
 	cout << "-----------------"<< endl;
 	cout << "front face" << endl;
 	cout << "-----------------"<< endl;
@@ -104,7 +104,7 @@ void cube::listFaces()
 }
 
 void cube::setCube()
-{
+{//allows custom seeting of cube. Could be make shorter if i did some renaming.
 	cout << "set the front face" << endl;
 	cout << "------------------" << endl;
 	cout << "enter square 11: " << endl;
@@ -633,7 +633,7 @@ void cube::setCube()
 }
 
 void cube::defaultCube()
-{
+{//sets cube to solved. 
 	front_face.s11 = "white";
 	front_face.s12 = "white";
 	front_face.s13 = "white";
@@ -846,7 +846,7 @@ void cube::left()//left face away from you
 	updateCorners();
 }
 
-void cube::leftI()
+void cube::leftI()//equivalent to three left rotations
 {
 	left();
 	left();
@@ -898,7 +898,7 @@ void cube::top() //clockwise
 	updateCorners();
 }
 
-void cube::topI()
+void cube::topI()//counterclockwise
 {
 	top();
 	top();
@@ -907,7 +907,7 @@ void cube::topI()
 	updateCorners();
 }
 
-void cube::bottom()//this is the left rotation of the bottom face
+void cube::bottom()//this is the front to left rotation of bottom face
 {
 	string temp1, temp2, temp3; 
 	//these will hold colors front three that will be rotated to the left
@@ -950,7 +950,7 @@ void cube::bottom()//this is the left rotation of the bottom face
 	updateCorners();
 }
 
-void cube::bottomI()
+void cube::bottomI()//front to right rotation of bottom face
 {
 	bottom();
 	bottom();
@@ -959,362 +959,7 @@ void cube::bottomI()
 	updateCorners();
 }
 
-/*
-void cube::leftInsert()
-{
-	topI();
-	left();
-	top();
-	leftI();
-	top();
-	front();
-	topI();
-	frontI();
-	updateEdges();
-	updateCorners();
-}
-
-void cube::rightInsert()
-{
-	top();
-	right();
-	topI();
-	rightI();
-	topI();
-	frontI();
-	top();
-	front();
-	updateEdges();
-	updateCorners();
-}
-
-	
-void cube::sortCorners()
-{
-	top();
-	right();
-	topI();
-	left();
-	top();
-	rightI();
-	topI();
-	leftI();
-	updateEdges();
-	updateCorners();
-}
-
-		
-void cube::solveCorners()
-{
-	rightI();
-	bottom();
-	right();
-	bottomI();
-	updateEdges();
-	updateCorners();
-}
-*/
-/*		
-void cube::rotate(face new_front, face new_top)
-{
-	face whiteF = front_face;
-	face yellowF = back_face;
-	face blueF = right_face;
-	face greenF = left_face;
-	face orangeF = top_face;
-	face redF = bottom_face;
-
-	if(new_front.s22 == "white")
-	{
-		if(new_top.s22 == "orange")
-		{
-			front_face = new_front;
-			top_face = new_top;
-			left_face = greenF;
-			right_face = blueF;
-			bottom_face = redF;
-			back_face = yellowF;
-
-		}
-		else if(new_top.s22 == "green")
-		{
-			front_face = new_front;
-			top_face = new_top;
-			left_face = redF;
-			right_face = orangeF;
-			bottom_face = blueF;
-			back_face = yellowF;	
-		}
-
-		else if(new_top.s22 == "red")
-		{
-			front_face = new_front;
-			top_face = new_top;
-			left_face = blueF;
-			right_face = greenF;
-			bottom_face = orangeF;
-			back_face = yellowF;	
-		}
-
-		else if(new_top.s22 == "blue")
-		{
-			front_face = new_front;
-			top_face = new_top;
-			left_face = orangeF;
-			right_face = redF;
-			bottom_face = greenF;
-			back_face = yellowF;	
-		}
-
-		else
-		{
-			cout << "houston we have a problem :/" << endl;
-		}
-	}
-
-	else if(new_front.s22 == "orange")
-	{
-		if(new_top.s22 == "white")
-		{
-			front_face = new_front;
-			top_face = new_top;
-			left_face = blueF;
-			right_face = greenF;
-			bottom_face = yellowF;
-			back_face = redF;
-		}
-		else if(new_top.s22 == "blue")
-		{
-			front_face = new_front;
-			top_face = new_top;
-			left_face = yellowF;
-			right_face = whiteF;
-			bottom_face = greenF;
-			back_face = redF;	
-		}
-
-		else if(new_top.s22 == "yellow")
-		{
-			front_face = new_front;
-			top_face = new_top;
-			left_face = greenF;
-			right_face = blueF;
-			bottom_face = whiteF;
-			back_face = redF;	
-		}
-
-		else if(new_top.s22 == "green")
-		{
-			front_face = new_front;
-			top_face = new_top;
-			left_face = whiteF;
-			right_face = yellowF;
-			bottom_face = blueF;
-			back_face = redF;	
-		}
-
-		else
-		{
-			cout << "houston we have a problem :/" << endl;
-		}
-	}
-
-	else if(new_front.s22 == "green")
-	{
-		if(new_top.s22 == "white")
-		{
-			front_face = new_front;
-			top_face = new_top;
-			left_face = orangeF;
-			right_face = redF;
-			bottom_face = yellowF;
-			back_face = blueF;
-		}
-		else if(new_top.s22 == "orange")
-		{
-			front_face = new_front;
-			top_face = new_top;
-			left_face = yellowF;
-			right_face = whiteF;
-			bottom_face = redF;
-			back_face = blueF;	
-		}
-
-		else if(new_top.s22 == "yellow")
-		{
-			front_face = new_front;
-			top_face = new_top;
-			left_face = redF;
-			right_face = orangeF;
-			bottom_face = whiteF;
-			back_face = blueF;	
-		}
-
-		else if(new_top.s22 == "red")
-		{
-			front_face = new_front;
-			top_face = new_top;
-			left_face = whiteF;
-			right_face = yellowF;
-			bottom_face = orangeF;
-			back_face = blueF;	
-		}
-
-		else
-		{
-			cout << "houston we have a problem :/" << endl;
-		}
-	}
-
-	else if(new_front.s22 == "red")
-	{
-		if(new_top.s22 == "blue")
-		{
-			front_face = new_front;
-			top_face = new_top;
-			left_face = whiteF; 
-			right_face = yellowF;
-			bottom_face = greenF;
-			back_face = orangeF;
-		}
-		else if(new_top.s22 == "white")
-		{
-			front_face = new_front;
-			top_face = new_top;
-			left_face = greenF;
-			right_face = blueF;
-			bottom_face = yellowF;
-			back_face = orangeF;	
-		}
-
-		else if(new_top.s22 == "green")
-		{
-			front_face = new_front;
-			top_face = new_top;
-			left_face = yellowF;
-			right_face = whiteF;
-			bottom_face = blueF;
-			back_face = orangeF;	
-		}
-
-		else if(new_top.s22 == "yellow")
-		{
-			front_face = new_front;
-			top_face = new_top;
-			left_face = blueF;
-			right_face = greenF;
-			bottom_face = whiteF;
-			back_face = orangeF;	
-		}
-
-		else
-		{
-			cout << "houston we have a problem :/" << endl;
-		}
-	}
-
-	else if(new_front.s22 == "yellow")
-	{
-		if(new_top.s22 == "orange")
-		{
-			front_face = new_front;
-			top_face = new_top;
-			left_face = blueF;
-			right_face = greenF;
-			bottom_face = redF;
-			back_face = whiteF;
-		}
-		else if(new_top.s22 == "blue")
-		{
-			front_face = new_front;
-			top_face = new_top;
-			left_face = redF;
-			right_face = orangeF;
-			bottom_face = greenF;
-			back_face = whiteF;	
-		}
-
-		else if(new_top.s22 == "red")
-		{
-			front_face = new_front;
-			top_face = new_top;
-			left_face = greenF;
-			right_face = blueF;
-			bottom_face = orangeF;
-			back_face = whiteF;	
-		}
-
-		else if(new_top.s22 == "green")
-		{
-			front_face = new_front;
-			top_face = new_top;
-			left_face = orangeF;
-			right_face = redF;
-			bottom_face = blueF;
-			back_face = whiteF;	
-		}
-
-		else
-		{
-			cout << "houston we have a problem :/" << endl;
-		}
-	}
-
-	else if(new_front.s22 == "blue")
-	{
-		if(new_top.s22 == "yellow")
-		{
-			front_face = new_front;
-			top_face = new_top;
-			left_face = orangeF;
-			right_face = redF;
-			bottom_face = whiteF;
-			back_face = greenF;
-		}
-		else if(new_top.s22 == "orange")
-		{
-			front_face = new_front;
-			top_face = new_top;
-			left_face = whiteF;
-			right_face = yellowF;
-			bottom_face = redF;
-			back_face = greenF;	
-		}
-
-		else if(new_top.s22 == "white")
-		{
-			front_face = new_front;
-			top_face = new_top;
-			left_face = redF;
-			right_face = orangeF;
-			bottom_face = yellowF;
-			back_face = greenF;	
-		}
-
-		else if(new_top.s22 == "redF")
-		{
-			front_face = new_front;
-			top_face = new_top;
-			left_face = yellowF;
-			right_face = whiteF;
-			bottom_face = orangeF;
-			back_face = greenF;	
-		}
-
-		else
-		{
-			cout << "houston we have a problem :/" << endl;
-		}
-	}
-
-	else
-	{
-		cout << "houston we have a MAJOR problem :(" << endl;
-	}
-}
-*/
-
-void cube::rotateUp()
+void cube::rotateUp()//rotates entire cube up one face
 {
 	face tempFace;
 	tempFace = front_face;
@@ -1392,7 +1037,7 @@ void cube::rotateUp()
 
 }
 
-void cube::rotateLeft()
+void cube::rotateLeft() //rotates entire cube left one face
 {
 	face tempFace;
 	tempFace = front_face;
@@ -1433,7 +1078,7 @@ void cube::rotateLeft()
 	updateCorners();
 }
 
-void cube::updateEdges()
+void cube::updateEdges()//updates edge properties after some rotations
 {
 	//updateing front layer edges
 	edgeF1.color1 = top_face.s32;
@@ -1475,7 +1120,7 @@ void cube::updateEdges()
 	edgeBa4.color2 = back_face.s23;
 }
 
-void cube::updateCorners()
+void cube::updateCorners()//updates corner properties after some rotation
 {
 	//updating front corners
 	cornerF1.color1 = top_face.s31;
@@ -1513,7 +1158,7 @@ void cube::updateCorners()
 
 }
 
-void cube::printEdges()
+void cube::printEdges()//mostly used for debugging, user doesnt interact with this much
 {
 	cout << "edge f1: " << edgeF1.color1 << ", " << edgeF1.color2 << endl;
 	cout << "edge f2: " << edgeF2.color1 << ", " << edgeF2.color2 << endl;
@@ -1531,7 +1176,7 @@ void cube::printEdges()
 	cout << "edge ba4: " << edgeBa4.color1 << ", " << edgeBa4.color2 << endl;
 }
 
-void cube::printCorners()
+void cube::printCorners()//mostly used for debugging, user doesnt interact with this much
 {
 	cout << "corner f1: " << cornerF1.color1 << ", " << cornerF1.color2 << ", " << cornerF1.color3 << endl; 
 	cout << "corner f2: " << cornerF2.color1 << ", " << cornerF2.color2 << ", " << cornerF2.color3 << endl; 
@@ -1544,7 +1189,7 @@ void cube::printCorners()
 	cout << "corner b4: " << cornerB4.color1 << ", " << cornerB4.color2 << ", " << cornerB4.color3 << endl; 
 }
 
-string cube::findEdge(string _color1, string _color2)
+string cube::findEdge(string _color1, string _color2)//takes two colors and returns edge piece location
 {
 	//searching front edges
 	if((edgeF1.color1 == _color1 && edgeF1.color2 == _color2) or (edgeF1.color1 == _color2 && edgeF1.color2 == _color1))
@@ -1584,7 +1229,7 @@ string cube::findEdge(string _color1, string _color2)
 }
 
 string cube::findCorner(string _color1, string _color2, string _color3)
-{
+{//takes three colors and returns corner piece location
 	//search front corners
 	if((cornerF1.color1 == _color1 && cornerF1.color2 == _color2 && cornerF1.color3 == _color3)
 	or (cornerF1.color1 == _color1 && cornerF1.color2 == _color3 && cornerF1.color3 == _color2)
@@ -1655,7 +1300,7 @@ string cube::findCorner(string _color1, string _color2, string _color3)
 }
 
 void cube::firstEdge(string location)
-{
+{//solves first piece in cube
 	if(location == "edge F1")
 	{//edge is already in the correct location
 		if(edgeF1.color1 == "orange") 
@@ -1889,7 +1534,7 @@ void cube::firstEdge(string location)
 }
 
 void cube::secondEdge(string location)
-{
+{//solves second piece in cube
 	cout << "-the blue and orange edge piece is located at: " << location << endl;
 	
 	if(location == "edge F1")
@@ -2136,7 +1781,7 @@ void cube::secondEdge(string location)
 }
 
 void cube::thirdEdge(string location)
-{
+{//solves third edge
 	cout << "-the yellow and orange edge piece is located at: " << location << endl;
 	
 	if(location == "edge F1")
@@ -2367,7 +2012,7 @@ void cube::thirdEdge(string location)
 }
 
 void cube::fourthEdge(string location)
-{
+{//solves fourth edge
 	cout << "-the green and orange edge piece is located at: " << location << endl;
 	
 	if(location == "edge F1")
@@ -2592,7 +2237,7 @@ void cube::fourthEdge(string location)
 }
 
 void cube::corner(string location)
-{
+{//solves all four of the inital corners
 	cout << "-the location of our desired corner is: " << location << endl;
 	if(location == "corner F1")
 	{
@@ -2919,7 +2564,7 @@ void cube::corner(string location)
 }
 
 void cube::insert(string location)
-{
+{//does all the left and right insertion to complete second layer of cube
 	cout<< "-our desired edge piece is located at: " << location << endl;
 	if(location == "edge F1")
 	{
@@ -3323,7 +2968,7 @@ void cube::insert(string location)
 }
 
 void cube::topCross()
-{
+{//creates a cross on the top of the cube
 	if((top_face.s12 == "red") && (top_face.s21 == "red") && (top_face.s23 == "red") && (top_face.s32 == "red"))
 	{
 		cout << "top cross is alreay set up!" << endl;
@@ -3452,7 +3097,7 @@ void cube::topCross()
 }
 
 void cube::alignCross()
-{
+{//sorts cross edge pieces
 	while(front_face.s12!=front_face.s22)
 	{
 		cout << "do:  U" << endl;
@@ -3542,7 +3187,7 @@ void cube::alignCross()
 }
 
 void cube::sortCorners()
-{
+{//sorts final four corners
 	cout << "-we need to look for a corner which is in the correct location" << endl;
 	cout << "-first lets check if the F2 corner is correctly located" << endl;
 	if(findCorner(front_face.s22, top_face.s22, left_face.s22) != "corner F1" 
@@ -3608,7 +3253,7 @@ void cube::sortCorners()
 }
 
 void cube::finishCube()
-{
+{//solves four final corners
 	while(top_face.s33 != top_face.s22)
 	{
 		cout << "do: RI B R BI" << endl;
@@ -3655,7 +3300,7 @@ void cube::finishCube()
 }
 
 void cube::solveCube()
-{
+{//main function which calls all the cube solving functions.
 	cout << "welcome to the solving tutorial, please hold the cube so that the white face is front and the orange face is top" << endl;
 	cout << "first we will make a cross on the orange face"<< endl;
 	cout << "_____---step 1---____" << endl;

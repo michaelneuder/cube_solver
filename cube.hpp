@@ -62,7 +62,7 @@ class cube
 		void solveCube();//essentially the main that calls all the cube solving functions based on current cube state
 		
 		//algorithms
-		void rotateUp();
+		void rotateUp();//any rotation needed can be described as a combination of these two
 		void rotateLeft();
 		
 		//basic rotations
