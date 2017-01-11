@@ -27,9 +27,10 @@ void displayMenu()
 	cout << "14. rotate cube up" << endl;
 	cout << "15. rotate cube down" << endl;
 	cout << "16. rotate cube left" << endl;
-	cout << "17. rotate cube right" << endl << endl;
+	cout << "17. rotate cube right" << endl;
+	cout << "18. quit :(" << endl << endl;
 
-	cout << "____---algorithms---____" << endl;
+	/*cout << "____---algorithms---____" << endl;
 	cout << "18. corners" << endl;
 	cout << "19. left insert" << endl;
 	cout << "20. right insert" << endl;
@@ -42,7 +43,7 @@ void displayMenu()
 	cout << "testing" << endl;
 	cout << "26. print edges" << endl;
 	cout << "27. print corners" << endl;
-	cout << "28. find corner" << endl;
+	cout << "28. find corner" << endl;*/
 }
 
 void handleUserInput()
@@ -203,6 +204,13 @@ void handleUserInput()
 
 			case 18:
 			{
+				cout << "thanks" << endl;
+				quit = true;
+				break;
+			}
+
+			/*case 18:
+			{
 				c1.solveCorners();
 				cout << "corners algorithm performed!" << endl;
 				cout << "--------------" << endl;
@@ -300,7 +308,7 @@ void handleUserInput()
 				location = c1.findCorner(color1, color2, color3);
 				cout << "location is: " << location << endl;
 				break;
-			}
+			}*/
 
 			default:
 			{
