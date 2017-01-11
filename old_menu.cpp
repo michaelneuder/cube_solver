@@ -1,4 +1,4 @@
-/*void displayMenu2()
+void displayMenu2()
 {
 	cout << "1. front" << endl;
 	cout << "2. front inverted" << endl;
@@ -17,9 +17,9 @@
 
 	cout << "11. print cube" << endl;
 	cout << "12. quit" << endl;
-}*/
+}
 
-/*void displayMenu3()
+void displayMenu3()
 {
 	cout << "1. corners" << endl;
 	cout << "2. left insert" << endl;
@@ -31,8 +31,8 @@
 	cout << "8. print faces" << endl;
 	cout << "9. quit to previous menu" << endl;
 }
-*/
-/*cube handleUserInput2(cube c1)
+
+cube handleUserInput2(cube c1)
 {
 	bool quit1 = false;
 	string input;
@@ -155,9 +155,8 @@
 	}
 	return c1;
 }
-*/
 
-/*cube handleUserInput3(cube c1)
+cube handleUserInput3(cube c1)
 {
 	bool quit2 = false;
 	string input;
@@ -251,4 +250,3 @@
 	}
 	return c1;
 }
-*/
